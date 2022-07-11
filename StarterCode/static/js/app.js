@@ -8,3 +8,12 @@ function buildMetaData(sample) {
         var buildingArray = metadata.filter(sampleObj => sampleObj.id == sample);
         var result = buildingArray[0];
         var panelData = d3.select("#sample-metadata");
+
+        panelData.html("");
+
+        // Add values and key pairs to panelData using 'Object.entires'
+        Object.entries(result).forEach(([key, value]) => {
+        panelData.append("h6").text(`${key.toUpperCase()}: ${value}`);
+      });
+    });
+}
