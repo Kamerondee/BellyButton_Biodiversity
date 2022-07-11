@@ -92,3 +92,12 @@ function buildCharts(sample) {
  });
 };
 
+function optionChanged(newSample) {
+    // Retrieve new data each time
+    buildCharts(newSample);
+    buildMetaData(newSample);
+  };
+
+  
+// Start dashboard
+  init()
