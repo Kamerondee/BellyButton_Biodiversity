@@ -70,3 +70,25 @@ function buildCharts(sample) {
       Plotly.newPlot("bar", barData, chartLayout);
     });
   };
+
+  // Select the element from dropdown references and then populate it by using the list of sample names
+  function init() {
+    var selectDropdown = d3.select("#selDataset");
+  
+    d3.json("samples.json").then((data) => {
+      var name = data.names;
+  
+      name.forEach((sample) => {
+        selectDropdown
+          .append("option")
+          .text(sample)
+          .property("value", sample);
+      })
+
+   // Use the sample data from the list to build the plots
+   var sampleData = name[0];
+   buildCharts(sampleData);
+   buildMetaData(sampleData);
+ });
+};
+
